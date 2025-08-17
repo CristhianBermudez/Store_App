@@ -1,4 +1,4 @@
-package com.cristhiandev.store_app.ui.login.iu
+package com.cristhiandev.store_app.ui.login.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

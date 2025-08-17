@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.cristhiandev.store_app.ui.login.iu.LoginScreen
+import com.cristhiandev.store_app.ui.login.ui.LoginScreen
 import com.cristhiandev.store_app.ui.register.ui.RegisterScreen
 
 /**
