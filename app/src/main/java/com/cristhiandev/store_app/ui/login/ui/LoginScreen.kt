@@ -1,4 +1,4 @@
-package com.cristhiandev.store_app.ui.login.iu
+package com.cristhiandev.store_app.ui.login.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,14 +24,17 @@ import com.cristhiandev.store_app.ui.components.MyHorizontalDivider
 import com.cristhiandev.store_app.ui.components.VerticalSpacer
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navigateToRegister: () -> Unit,
+    navigateToHome: () -> Unit
+) {
     Scaffold { paddingValues ->
-        BodyScreen(paddingValues)
+        BodyScreen(paddingValues,navigateToRegister,navigateToHome)
     }
 }
 
 @Composable
-fun BodyScreen(paddingValues: PaddingValues) {
+fun BodyScreen(paddingValues: PaddingValues,navigateToRegister: () -> Unit,navigateToHome: () -> Unit) {
     Column(
         modifier = Modifier
             .padding(paddingValues)
@@ -41,7 +44,7 @@ fun BodyScreen(paddingValues: PaddingValues) {
     ) {
         MsgP()
         VerticalSpacer(40.dp)
-        BodyText()
+        BodyText(navigateToRegister,navigateToHome)
     }
 }
 
@@ -58,7 +61,7 @@ fun MsgP() {
 }
 
 @Composable
-fun BodyText() {
+fun BodyText(navigateToRegister: () -> Unit,navigateToHome: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth(0.8f)
@@ -97,7 +100,7 @@ fun BodyText() {
             modifier = Modifier
                 .fillMaxWidth(.5f)
                 .align(Alignment.CenterHorizontally),
-            action = {},
+            action = {navigateToHome()},
             txt = "Iniciar Sesión"
         )
         VerticalSpacer(10.dp)
@@ -121,14 +124,13 @@ fun BodyText() {
             )
         }
         MyHorizontalDivider(modifier = Modifier.padding(vertical = 15.dp))
-
         Box(
             modifier = Modifier
                 .fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
             TextButton(
-                onClick = { /*TODO*/ }
+                onClick = { navigateToRegister() }
             ) {
                 Text(
                     "¿No tienes una cuenta?",
