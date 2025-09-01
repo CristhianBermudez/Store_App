@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 /**
  * Pantalla de inicio de sesión de la aplicación.
@@ -25,9 +27,11 @@ import androidx.compose.ui.unit.sp
  * con otros elementos de la interfaz de usuario como la barra de estado o la barra de navegación.
  */
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    navigationController:()->Unit
+) {
     Scaffold { paddingValues ->
-        BodyScreen(paddingValues)
+        BodyScreen(paddingValues,navigationController)
     }
 }
 
@@ -42,11 +46,11 @@ fun LoginScreen() {
  * @param paddingValues Los valores de padding proporcionados por el Scaffold.
  */
 @Composable
-private fun BodyScreen(paddingValues: PaddingValues) {
+private fun BodyScreen(paddingValues: PaddingValues,navigationController:()->Unit) {
     Column(modifier = Modifier.padding(paddingValues)) {
         LoginTop()
         Spacer(modifier = Modifier.padding(16.dp))
-        LoginBody()
+        LoginBody(navigationController)
     }
 }
 
@@ -78,7 +82,7 @@ private fun LoginTop() {
  * para ocupar el 80% del ancho disponible de su contenedor padre.
  */
 @Composable
-private fun LoginBody() {
+private fun LoginBody(navigationController:()->Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth(0.8f)
@@ -100,6 +104,6 @@ private fun LoginBody() {
         Spacer(modifier = Modifier.padding(16.dp))
         Text(text = "Olvidaste tu contraseña?")
         Spacer(modifier = Modifier.padding(16.dp))
-        Text(text = "Registrate")
+        TextButton({ navigationController() }) { Text(text = "Regístrate") }
     }
 }
