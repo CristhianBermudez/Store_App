@@ -5,16 +5,18 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
 /**
  * Pantalla de inicio de sesión de la aplicación.
@@ -28,10 +30,11 @@ import androidx.navigation.NavController
  */
 @Composable
 fun LoginScreen(
-    navigationController:()->Unit
+    navigationRegister: () -> Unit,
+    navigationHome: () -> Unit
 ) {
     Scaffold { paddingValues ->
-        BodyScreen(paddingValues,navigationController)
+        BodyScreen(paddingValues, navigationRegister, navigationHome)
     }
 }
 
@@ -46,11 +49,19 @@ fun LoginScreen(
  * @param paddingValues Los valores de padding proporcionados por el Scaffold.
  */
 @Composable
-private fun BodyScreen(paddingValues: PaddingValues,navigationController:()->Unit) {
-    Column(modifier = Modifier.padding(paddingValues)) {
+private fun BodyScreen(
+    paddingValues: PaddingValues,
+    navigationRegister: () -> Unit,
+    navigationHome: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxWidth()
+    ) {
         LoginTop()
         Spacer(modifier = Modifier.padding(16.dp))
-        LoginBody(navigationController)
+        LoginBody(navigationRegister, navigationHome)
     }
 }
 
@@ -66,7 +77,7 @@ private fun LoginTop() {
     Text(
         text = "Iniciar Sesión",
         modifier = Modifier
-            .padding(16.dp)
+            .padding(vertical = 80.dp)
             .fillMaxWidth(),
         fontSize = 64.sp,
         textAlign = TextAlign.Center
@@ -82,28 +93,43 @@ private fun LoginTop() {
  * para ocupar el 80% del ancho disponible de su contenedor padre.
  */
 @Composable
-private fun LoginBody(navigationController:()->Unit) {
+private fun LoginBody(navigationRegister: () -> Unit, navigationHome: () -> Unit) {
     Column(
         modifier = Modifier
-            .fillMaxWidth(0.8f)
+            .fillMaxWidth()
+            .padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
             value = "",
             onValueChange = {},
-            label = { Text(text = "Correo") },
+            label = { Text(text = "Correo", fontSize = 18.sp) },
             modifier = Modifier
                 .fillMaxWidth()
         )
+        Spacer(modifier = Modifier.padding(8.dp))
         OutlinedTextField(
             value = "",
             onValueChange = {},
-            label = { Text(text = "Contraseña") },
+            label = { Text(text = "Contraseña", fontSize = 18.sp) },
             modifier = Modifier
                 .fillMaxWidth()
         )
-        Spacer(modifier = Modifier.padding(16.dp))
-        Text(text = "Olvidaste tu contraseña?")
-        Spacer(modifier = Modifier.padding(16.dp))
-        TextButton({ navigationController() }) { Text(text = "Regístrate") }
+        Spacer(modifier = Modifier.padding(8.dp))
+        Button(onClick = {
+            navigationHome()
+        }) {
+            Text(text = "Iniciar Sesión", fontSize = 18.sp)
+        }
+        Spacer(modifier = Modifier.padding(8.dp))
+        TextButton(onClick = { /*TODO*/ }) {
+            Text(text = "¿Has olvidado tu contraseña?", fontSize = 18.sp)
+        }
+        Spacer(modifier = Modifier.padding(64.dp))
+        OutlinedButton(
+            onClick = { navigationRegister() }
+        ) {
+            Text(text = "Crear Cuenta nueva", fontSize = 18.sp)
+        }
     }
 }
