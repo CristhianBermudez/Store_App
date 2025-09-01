@@ -1,4 +1,4 @@
-package com.cristhiandev.store_app.ui.components.navigation
+package com.cristhiandev.store_app.navegation
 
 import kotlinx.serialization.Serializable
 

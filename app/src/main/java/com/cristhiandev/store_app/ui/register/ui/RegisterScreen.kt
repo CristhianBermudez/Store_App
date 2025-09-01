@@ -14,12 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.cristhiandev.store_app.ui.components.HorizontalSpacer
-import com.cristhiandev.store_app.ui.components.LoginButton
-import com.cristhiandev.store_app.ui.components.MyHorizontalDivider
-import com.cristhiandev.store_app.ui.components.VerticalSpacer
 
 @Composable
 fun RegisterScreen() {
@@ -38,7 +33,6 @@ fun BodyScreen(paddingValues: PaddingValues) {
         verticalArrangement = Arrangement.Center
     ) {
         Top()
-        VerticalSpacer(40.dp)
         Body()
     }
 }
@@ -68,7 +62,6 @@ fun Body() {
             modifier = Modifier
                 .fillMaxWidth()
         )
-        VerticalSpacer(5.dp)
         OutlinedTextField(
             value = "",
             onValueChange = {},
@@ -76,7 +69,6 @@ fun Body() {
             modifier = Modifier
                 .fillMaxWidth()
         )
-        VerticalSpacer(5.dp)
         OutlinedTextField(
             value = "",
             onValueChange = {},
@@ -84,7 +76,6 @@ fun Body() {
             modifier = Modifier
                 .fillMaxWidth()
         )
-        VerticalSpacer(5.dp)
         OutlinedTextField(
             value = "",
             onValueChange = {},
@@ -92,33 +83,11 @@ fun Body() {
             modifier = Modifier
                 .fillMaxWidth()
         )
-        VerticalSpacer(10.dp)
-        LoginButton(
-            modifier = Modifier
-                .fillMaxWidth(.5f)
-                .align(Alignment.CenterHorizontally),
-            action = {},
-            txt = "Registrate"
-        )
-        MyHorizontalDivider(modifier = Modifier.padding(vertical = 20.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
 
             ) {
-            LoginButton(
-                modifier = Modifier
-                    .fillMaxWidth(.5f),
-                action = {},
-                txt = "Google"
-            )
-            HorizontalSpacer(10.dp)
-            LoginButton(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                action = {},
-                txt = "Otro"
-            )
         }
     }
 }

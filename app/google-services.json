@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "845714688600",
+    "project_id": "store-app-b329f",
+    "storage_bucket": "store-app-b329f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845714688600:android:48755197cb9ad866a5d82d",
+        "android_client_info": {
+          "package_name": "com.cristhiandev.store_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlW6QMaoC3Ut_cR0qVpetjTb31lYiHFqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

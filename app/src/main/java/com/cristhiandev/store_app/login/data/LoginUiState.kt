@@ -1,4 +1,4 @@
-package com.cristhiandev.store_app.ui.login.data
+package com.cristhiandev.store_app.login.data
 
 data class LoginUiState(
     val email:String="",
